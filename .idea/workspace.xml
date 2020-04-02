@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="46216fbf-2ffd-4d09-a9ea-746780ede154" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1Zzk9O5sUwTCr0PXg0aRpChzF7K" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.16.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46216fbf-2ffd-4d09-a9ea-746780ede154" name="Default Changelist" comment="" />
+      <created>1585849157204</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585849157204</updated>
+      <workItem from="1585849158433" duration="2905000" />
+      <workItem from="1585852072126" duration="1692000" />
+      <workItem from="1585853770503" duration="44000" />
+      <workItem from="1585853819937" duration="1342000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2033" y="378" key="#Minotauros.js" timestamp="1585851216670">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="2033" y="378" key="#Minotauros.js/0.0.3440.1400@0.0.3440.1400" timestamp="1585851216670" />
+    <state x="1768" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585853233091">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1768" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1585853233091" />
+    <state x="2044" y="483" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1585852085959">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="2044" y="483" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.0.3440.1400@0.0.3440.1400" timestamp="1585852085959" />
+    <state x="2094" y="445" key="FileChooserDialogImpl" timestamp="1585853742316">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="2094" y="445" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1585853742316" />
+    <state x="1815" y="346" key="SettingsEditor" timestamp="1585853814111">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1815" y="346" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1585853814111" />
+  </component>
+</project>
