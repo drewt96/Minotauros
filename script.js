@@ -1,8 +1,4 @@
-//const Minotauros = require('./Minotauros');
 
-//let mino = new Minotauros();
-
-import {getToken} from './Minotauros';
 
 // letiables used to keep track of where each player currently is located
 let playerOne = document.getElementById("0");
@@ -28,7 +24,6 @@ let hasRolled = false;
 // Used to roll the dice
 function rollDice(){
 
-    alert("The token is " + getToken());
     // If the player has not already rolled, allow them to do so
     if(!hasRolled){
 
