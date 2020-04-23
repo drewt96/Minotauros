@@ -1,35 +1,82 @@
+/**
+ * @class
+ * @description The main class that is used to make the library work.
+ */
 class Minotauros {
 
+    /**
+     * @inheritDoc
+     * @constructor
+     * @description The constructor for the instance of the library that initializes the starting variable.
+     * @variable {Array[number, number, number, String, number, number]} registeredTokens - Stores all tokens that have been registered by the user
+     * @returns {Minotauros} - Returns an instance of the Minotauros class.
+     */
     constructor() {
         this.registeredTokens = [];
     }
 
-    // Return the array of currently registered tokens
+    /**
+     * @function
+     * @description A getter method for the registered tokens
+     * @returns {Array} registeredTokens - Returns the array of registered tokens.
+     */
     getTokens(){
         return this.registeredTokens;
     }
 
-    // Return number of currently registered tokens
+    /**
+     * @function
+     * @description A method for finding the number of tokens that have been registered
+     * @returns {number} registeredTokens.length - Returns the number of currenly registered tokens
+     */
     getNumTokens(){
         return this.registeredTokens.length;
     }
 
-    // Used to manually register a token
+
+    /**
+     * @function
+     * @description A method for storing the information for a new token in registeredTokens based on angles created by the triangle formed by connecting the dots on the bottom of a token.
+     * @param {number} angle1 - The first angle created by the dots on the bottom of the token.
+     * @param {number} angle2 - The second angle created by the dots on the bottom of the token.
+     * @param {number} angle3 - The third angle created by the dots on the bottom of the token.
+     * @param {String} name - The name of the token.
+     */
     registerToken(angle1, angle2, angle3, name){
+
+        // Create the new token with placeholder values for token position
         let newToken = [angle1, angle2, angle3, name, -1, -1];
+
+        // Push the new token into the array of registered tokens
         this.registeredTokens.push(newToken);
     }
 
-    // Used to update the position of the token
+    /**
+     * @function
+     * @description A method to update the position of a token as it is moved around the touch screen based on the centerpoint of the three dots on the bottom of the token.
+     * @param {number} x1 - The x coordinate of the first detected touch point of the token.
+     * @param {number} y1 - The y coordinate of the first detected touch point of the token.
+     * @param {number} x2 - The x coordinate of the second detected touch point of the token.
+     * @param {number} y2 - The y coordinate of the second detected touch point of the token.
+     * @param {number} x3 - The x coordinate of the third detected touch point of the token.
+     * @param {number} y3 - The y coordinate of the third detected touch point of the token.
+     * @param {String} name - The name of the token whose position is being updated.
+     * @returns {number[]} - Return the x and y coordinates that represent the updated location of the token.
+     */
     updateTokenPosition(x1, y1, x2, y2, x3, y3, name){
+
+        // Get the center x value by adding the three x coordinates and dividing them by three
         let x = (x1 + x2 + x3)/3;
+
+        // Get the center y value by adding the three y coordinates and dividing them by three
         let y = (y1 + y2 + y3)/3;
 
-        // Loop through all tokens, find by name the one to update, and update its X and Y coordinates
+        // Loop through all registered tokens, find by name the one to update, and update its x and y coordinates
         for(let i = 1; i < this.registeredTokens.length; i++){
             if(this.registeredTokens[i][3].localeCompare(name) == 0){
                 this.registeredTokens[i][4] = x;
                 this.registeredTokens[i][5] = y;
+                break;
             }
         }
 
@@ -37,25 +84,40 @@ class Minotauros {
         return [x, y];
     }
 
-    // Used to register the token based on touch
+    /**
+     * @function
+     * @description Used to register a token by placing it on the screen and sensing the touch events.
+     * @param {TouchEvent} theTouch - The touch event triggered by a token being placed on the touch screen.
+     * @returns {Array} theIToken - Returns either an error token indicating that that the token is already registered or the number of touches detected is not equal to 3, or returns the newly registered token.
+     */
     registerTokenTouch(theTouch){
 
-
+        // Try to identify the token based on the touch event
         let theIToken = this.identifyToken(theTouch);
 
+        // If the token is not an error token, register the token
         if((theIToken[0] != -1) && (theIToken[3].localeCompare("Error: Number of Touches is not 3") != 0)){
+
+            // Retrieve the list of tokens and give it a name based on the order of tokens being registered
             let theTokens = this.getTokens();
             let tokenName = "Token " + (theTokens.length + 1).toString();
+
+            // Register the token and return it
             this.registerToken(theIToken[0], theIToken[1], theIToken[2], tokenName);
-            return theTokens[theTokens.length - 1];
-        } else {
-            return theIToken;
+            theIToken = [theIToken[0], theIToken[1], theIToken[2], tokenName];
         }
 
+        return theIToken;
     }
 
-    // Used to identify a token
+    /**
+     * @function
+     * @description Used to identify a token based on the touch event that is passed into the function.
+     * @param {TouchEvent} theTouch - The touch event triggered by a token being placed on the touch screen.
+     * @returns {Array} - Returns either an error token indicating that that the token is not registered or the number of touches detected is not equal to 3, or returns the token that is registered.
+     */
     identifyToken(theTouch){
+
         // Check if the number of touches is 3
         if(theTouch.targetTouches.length == 3){
 
@@ -89,12 +151,15 @@ class Minotauros {
             let ag3 = Math.round(angle3 * 100);
             let registeredPosition = -1;
 
+            // Loop through all the registered tokens
             for(let i = 0; i < theTokens.length; i++){
+
+                // Grab the three angle values of the token for convenience
                 let tag1 = Math.round(theTokens[i][0] * 100);
                 let tag2 = Math.round(theTokens[i][1] * 100);
                 let tag3 = Math.round(theTokens[i][2] * 100);
 
-                // Check for each pairing order
+                // Check for each pairing order of angles to see if a token with the same angles is registered
                 if( (ag1 === tag1 && ag2 === tag2 && ag3 === tag3) || (ag1 === tag1 && ag2 === tag3 && ag3 === tag2) || (ag1 === tag2 && ag2 === tag1 && ag3 === tag3) || (ag1 === tag2 && ag2 === tag3 && ag3 === tag1) || (ag1 === tag3 && ag2 === tag2 && ag3 === tag1) || (ag1 === tag3 && ag2 === tag1 && ag3 === tag2)){
                     isRegistered = true;
                     registeredPosition = i;
@@ -117,7 +182,12 @@ class Minotauros {
         }
     }
 
-    // Used to confirm that a token has been removed from the touch screen
+    /**
+     * @function
+     * @description Used to determine if, when a touch event ends, a token has been removed from the touch screen.
+     * @param {TouchEvent} theTouch - The touch event triggered by a token being placed on the touch screen.
+     * @returns {boolean} - Returns true if less than 3 touches are detected and returns false otherwise.
+     */
     touchRemoved(theTouch){
 
         if(theTouch.targetTouches.length < 3){
